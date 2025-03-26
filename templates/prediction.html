@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction{% endblock title %}Home
+
+{% block body %}
+
+<section class="text-white body-font -my-9">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+    <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+      <h1 class="title-font font-medium text-3xl text-green-900">Insurance Premium Prediction</h1>
+      <p class="leading-relaxed mt-4">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p>
+      <br><b>
+        {% if output %}
+        <h2 class  = "text-success">Insurance Prediction: {{output}}</h2>
+        {% endif %}
+      </b>
+    </div>
+    <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+      <h2 class="text-black text-lg font-medium title-font mb-5">Fill the Details Please</h2>
+      <form  method="post" action="/prediction/">
+        {% csrf_token %}
+        <div class="relative mb-4">
+          <label for="full-name" class="leading-7 text-sm text-gray-600">Enter the age</label>
+          <input type="text" id="age" name="age" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative mb-4">
+          <label for="email" class="leading-7 text-sm text-gray-600">Enter the sex(male/female)</label>
+          <select id="sex" name="sex" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+          </select>        
+        </div>
+
+        <div class="relative mb-4">
+          <label for="full-name" class="leading-7 text-sm text-gray-600">Enter BMI</label>
+          <input type="text" id="bmi" name="bmi" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative mb-4">
+          <label for="email" class="leading-7 text-sm text-gray-600">Enter number of children</label>
+          <input type="number" id="children" name="children" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+
+        <div class="relative mb-4">
+          <label for="full-name" class="leading-7 text-sm text-gray-600">Are you smoker?</label>
+          <select id="smoker" name="smoker" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <div class="relative mb-4">
+          <label for="email" class="leading-7 text-sm text-gray-600">Select your region </label>
+          <select id="region" name="region" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">Southwest</option>
+            <option value="2">southeast</option>
+            <option value="3">northwest</option>
+            <option value="4">northeast </option>
+          </select>
+        </div>
+        <div class="text-center my-4"><button type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Predict</button>
+      </form>
+      <p class="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+    </div>
+  </div>
+</section> 
+
+{% endblock body %}
+
+
